@@ -1,26 +1,32 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Clash Display";
+  src: url("../assets/fonts/OTF/ClashDisplay-Regular.otf");
+  font-weight: 400;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+@font-face {
+  font-family: "Clash Display";
+  src: url("../assets/fonts/OTF/ClashDisplay-Extralight.otf");
+  font-weight: 100;
 }
 
-* {
-  box-sizing: border-box;
+@font-face {
+  font-family: "Clash Display";
+  src: url("../assets/fonts/OTF/ClashDisplay-Light.otf");
+  font-weight: 200;
 }
+ @font-face {
+  font-family: 'Ranade';
+  src: url("../assets/fonts/Ranade/Fonts/OTF/Ranade-Regular.otf");
+  font-weight: 400;
+ }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
-}
+ @font-face {
+  font-family: 'Ranade';
+  src: url("../assets/fonts/Ranade/Fonts/OTF/Ranade-Light.otf");
+  font-weight: 200;
+ }
