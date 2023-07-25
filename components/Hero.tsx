@@ -21,7 +21,7 @@ const Hero = () => {
             <Image alt='bg' src={Bg} />
        </div>
       <div className='lg:w-1/2 '>
-            <div className='flex justify-center mb-20 w-1/2 mx-auto lg:w-full lg:mb-24'>
+            <div className='flex justify-center mb-16 w-full lg:mb-24'>
                 <Image alt='logo' src={Logo} />
             </div>
             <div className="text-white text-[28px] lg:text-[32px]  font-clash-display">
@@ -30,7 +30,7 @@ const Hero = () => {
             <div className=' mb-8 mt-4 font-clash-display inline-block text-transparent text-[20px] lg:text-[24px] bg-clip-text bg-gradient-to-br from-white to-[rgba(255,255,255,0.00)]'>
                 Building the largest global Next-Gen ecosystem with real world assets, giving ownership to everyone.
             </div>
-            <div className="mb-16 text-white font-clash-display grid grid-cols-2  gap-y-10 w-[300px] mx-auto lg:mx-0 lg:gap-y-0 lg:w-full lg:grid-cols-4 place-items-center">
+            <div className="mb-16 text-white font-clash-display grid  w-full grid-cols-4 place-items-center">
                 <div className="w-[97px] p-[1px] h-[74px] flex bg-gradient-to-b from-[#8F8F8F] to-[#8F8F8F00] box-border rounded-[10px]">
                     <div className='bg-[#000000] flex-1 rounded-[10px] pl-2 py-1 text-left'>
                        <div className="text-[24px]">{days}</div>
@@ -95,7 +95,7 @@ const Hero = () => {
             {
                 label: 'Email Address*',
                 name: "email",
-                placeholder: 'gamersmerge@tbt.eth',
+                placeholder: 'changemaker@blowx.ai',
             },
             {
                 label: 'Twitter Handle*',
@@ -120,7 +120,7 @@ const Hero = () => {
       subtitle='You have successfully joined our waitlist, you will be notified when we launch, Please follow us on social media.'
       contents={<div className='mb-4'>
           <div className="bg-gradient-to-b from-[#8F8F8F] to-[#8F8F8F00] rounded-[10px] p-[1px]">
-            <Button className='bg-black w-full py-[10px] gap-2 rounded-[10px] font-ranade text-[#8F8F8F] text-[10px] flex justify-center items-center font-[200]'>
+            <Button className='bg-black w-full py-[10px] lowercase gap-2 rounded-[10px] font-ranade text-[#8F8F8F] text-[10px] flex justify-center items-center font-[200]'>
                 <Image alt='copy-icon' src={CopyIcon} />
                 <span>Copy & share your referral link to earn more tokens</span>
             </Button>

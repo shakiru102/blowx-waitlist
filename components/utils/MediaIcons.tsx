@@ -9,13 +9,16 @@ const MediaIcons: FC = () => {
 
     const media: MediaProps[] = [
         {
-            icon: <AiFillInstagram  color='white' size={24}/>
+          icon: <BsTwitter color='white' size={24}/>,
+          link: 'https://twitter.com/blowx_official?s=21&t=WsOunCWsNhdoyCG_aroRbQ'
+        },
+          {
+            icon: <BiLogoTelegram color='white' size={24}/>,
+            link: 'https://t.me/BlowX_Official'
         },
         {
-            icon: <BiLogoTelegram color='white' size={24}/>
-        },
-        {
-            icon: <BsTwitter color='white' size={24}/>
+          icon: <AiFillInstagram  color='white' size={24}/>,
+          link: 'https://instagram.com/blowx_official?igshid=OGQ5ZDc2ODk2ZA=='
         }
     ]
 
@@ -23,9 +26,11 @@ const MediaIcons: FC = () => {
     <div className='flex justify-center gap-8'>
        {
         media.map((item: MediaProps, index: number) => (
-          <IconButton key={index}>
-            { item.icon }
-          </IconButton>
+          <a href={item.link} target='_blank' key={index}>
+             <IconButton >
+              { item.icon }
+            </IconButton>
+          </a>
         ))
        }
     </div>
