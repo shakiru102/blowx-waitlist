@@ -8,6 +8,7 @@ import SolidButton from './utils/SolidButton'
 import RenderForm from './utils/RenderForm'
 import { Button } from '@mui/material'
 import CopyIcon from '../assets/copyicon.png'
+import CopyRight from '../assets/copyright.png'
 
 const Hero = () => {
   
@@ -62,6 +63,10 @@ const Hero = () => {
             <SolidButton onClick={() => setWaitlist(prev => !prev)} >
                 Join Waitlist & Airdrop
             </SolidButton>
+            <div className="absolute bottom-0 left-0 w-full flex justify-center items-center gap-2 text-white font-ranade text-[12px] lg:text-[14px] py-4">
+                <Image alt='copyright' src={CopyRight}/>
+                <span> 2023 BlowX Inc. All right reserved </span>
+            </div>
       </div>
       <Modal
       open={waitlist}
