@@ -63,31 +63,31 @@ const Hero = () => {
                 Building the largest global Next-Gen ecosystem with real world assets, giving ownership to everyone.
             </div>
             <div className="mb-16 text-white font-clash-display grid mx-auto w-full grid-cols-4 place-items-center">
-                <div className=" w-[90px] h-[70px] lg:w-[97px] p-[1px] lg:h-[74px] flex bg-gradient-to-b from-[#8F8F8F] to-[#8F8F8F00] box-border rounded-[10px]">
+                <div className=" w-[80px] h-[60px] lg:w-[97px] p-[1px] lg:h-[74px] flex bg-gradient-to-b from-[#8F8F8F] to-[#8F8F8F00] box-border rounded-[10px]">
                     <div className='bg-[#000000] flex-1 rounded-[10px] pl-2 py-1 text-left'>
-                       <div className="text-[24px]">{days}</div>
-                       <div className="text-[28px]">Days</div>
+                       <div className=" text-[18px] lg:text-[24px]">{days}</div>
+                       <div className=" text-[20px] lg:text-[28px]">Days</div>
                     </div>
                 </div>
 
-                <div className=" w-[90px] h-[70px] lg:w-[97px] p-[1px] lg:h-[74px] flex bg-gradient-to-b from-[#8F8F8F] to-[#8F8F8F00] box-border rounded-[10px]">
+                <div className=" w-[80px] h-[60px] lg:w-[97px] p-[1px] lg:h-[74px] flex bg-gradient-to-b from-[#8F8F8F] to-[#8F8F8F00] box-border rounded-[10px]">
                     <div className='bg-[#000000] flex-1 rounded-[10px] pl-2 py-1 text-left'>
-                       <div className="text-[24px]">{hours}</div>
-                       <div className="text-[28px]">Hrs</div>
+                       <div className=" text-[18px] lg:text-[24px]">{hours}</div>
+                       <div className=" text-[20px] lg:text-[28px]">Hrs</div>
                     </div>
                 </div>
 
-                <div className=" w-[90px] h-[70px] lg:w-[97px] p-[1px] lg:h-[74px] flex bg-gradient-to-b from-[#8F8F8F] to-[#8F8F8F00] box-border rounded-[10px]">
+                <div className=" w-[80px] h-[60px] lg:w-[97px] p-[1px] lg:h-[74px] flex bg-gradient-to-b from-[#8F8F8F] to-[#8F8F8F00] box-border rounded-[10px]">
                     <div className='bg-[#000000] flex-1 rounded-[10px] pl-2 py-1 text-left'>
-                       <div className="text-[24px]">{minutes}</div>
-                       <div className="text-[28px]">Min</div>
+                       <div className=" text-[18px] lg:text-[24px]">{minutes}</div>
+                       <div className=" text-[20px] lg:text-[28px]">Min</div>
                     </div>
                 </div>
 
-                <div className=" w-[90px] h-[70px] lg:w-[97px] p-[1px] lg:h-[74px] flex bg-gradient-to-b from-[#8F8F8F] to-[#8F8F8F00] box-border rounded-[10px]">
+                <div className=" w-[80px] h-[60px] lg:w-[97px] p-[1px] lg:h-[74px] flex bg-gradient-to-b from-[#8F8F8F] to-[#8F8F8F00] box-border rounded-[10px]">
                     <div className='bg-[#000000] flex-1 rounded-[10px] pl-2 py-1 text-left'>
-                       <div className="text-[24px]">{seconds}</div>
-                       <div className="text-[28px]">Secs</div>
+                       <div className=" text-[18px] lg:text-[24px]">{seconds}</div>
+                       <div className=" text-[20px] lg:text-[28px]">Secs</div>
                     </div>
                 </div>
             </div>
