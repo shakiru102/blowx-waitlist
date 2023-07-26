@@ -9,12 +9,43 @@ import RenderForm from './utils/RenderForm'
 import { Button } from '@mui/material'
 import CopyIcon from '../assets/copyicon.png'
 import CopyRight from '../assets/copyright.png'
+import * as yup from 'yup'
+import { UserProps } from 'types'
+import { createUser } from '../firebase'
+import axios from 'axios'
+import { useRouter } from 'next/router'
 
 const Hero = () => {
-  
+    const route = useRouter()
     const { days, hours, minutes, seconds } = countDown()
     const [waitlist, setWaitlist] = useState<boolean>(false)
     const [referral, setReferral] = useState<boolean>(false)
+    const [copied, setCopied] = useState<boolean>(false)
+    const [referralCode, setReferralCode] = useState<string>('')
+    const validationSchema = yup.object<UserProps>({
+        walletType: yup.string().required('Required'),
+        walletAddress: yup.string().required('Required'),
+        email: yup.string().email('Invalid email address').required('Required'),
+        twitterHandle: yup.string().required('Required'),
+        telegramHandle: yup.string().required('Required')
+    })
+
+    const handleCopyText = () => {
+        let copyReferral = document.getElementById("copyReferral");
+ 
+             if(copyReferral){
+                // @ts-ignore
+                copyReferral.select();
+                // @ts-ignore
+                copyReferral.setSelectionRange(0, 99999); // For mobile devices
+
+                // Copy the text inside the text field
+                // @ts-ignore
+                navigator.clipboard.writeText(copyReferral.value);
+                setCopied(true)
+                setTimeout(() => setCopied(false), 3000)
+             }  
+    }
  
   return (
     <div className='bg-black h-screen overflow-hidden flex justify-center items-center text-center relative'>
@@ -32,28 +63,28 @@ const Hero = () => {
                 Building the largest global Next-Gen ecosystem with real world assets, giving ownership to everyone.
             </div>
             <div className="mb-16 text-white font-clash-display grid mx-auto w-full grid-cols-4 place-items-center">
-                <div className="w-[97px] p-[1px] h-[74px] flex bg-gradient-to-b from-[#8F8F8F] to-[#8F8F8F00] box-border rounded-[10px]">
+                <div className=" w-[90px] h-[70px] lg:w-[97px] p-[1px] lg:h-[74px] flex bg-gradient-to-b from-[#8F8F8F] to-[#8F8F8F00] box-border rounded-[10px]">
                     <div className='bg-[#000000] flex-1 rounded-[10px] pl-2 py-1 text-left'>
                        <div className="text-[24px]">{days}</div>
                        <div className="text-[28px]">Days</div>
                     </div>
                 </div>
 
-                <div className="w-[97px] p-[1px] h-[74px] flex bg-gradient-to-b from-[#8F8F8F] to-[#8F8F8F00] box-border rounded-[10px]">
+                <div className=" w-[90px] h-[70px] lg:w-[97px] p-[1px] lg:h-[74px] flex bg-gradient-to-b from-[#8F8F8F] to-[#8F8F8F00] box-border rounded-[10px]">
                     <div className='bg-[#000000] flex-1 rounded-[10px] pl-2 py-1 text-left'>
                        <div className="text-[24px]">{hours}</div>
                        <div className="text-[28px]">Hrs</div>
                     </div>
                 </div>
 
-                <div className="w-[97px] p-[1px] h-[74px] flex bg-gradient-to-b from-[#8F8F8F] to-[#8F8F8F00] box-border rounded-[10px]">
+                <div className=" w-[90px] h-[70px] lg:w-[97px] p-[1px] lg:h-[74px] flex bg-gradient-to-b from-[#8F8F8F] to-[#8F8F8F00] box-border rounded-[10px]">
                     <div className='bg-[#000000] flex-1 rounded-[10px] pl-2 py-1 text-left'>
                        <div className="text-[24px]">{minutes}</div>
                        <div className="text-[28px]">Min</div>
                     </div>
                 </div>
 
-                <div className="w-[97px] p-[1px] h-[74px] flex bg-gradient-to-b from-[#8F8F8F] to-[#8F8F8F00] box-border rounded-[10px]">
+                <div className=" w-[90px] h-[70px] lg:w-[97px] p-[1px] lg:h-[74px] flex bg-gradient-to-b from-[#8F8F8F] to-[#8F8F8F00] box-border rounded-[10px]">
                     <div className='bg-[#000000] flex-1 rounded-[10px] pl-2 py-1 text-left'>
                        <div className="text-[24px]">{seconds}</div>
                        <div className="text-[28px]">Secs</div>
@@ -75,10 +106,19 @@ const Hero = () => {
       subtitle='Kindly fill in the form and join our waitlist to follow the development progress. You will be notified when we launch.'
       contents={
         <RenderForm
-        onSubmit={(e) => {
-         setWaitlist(false)
-         setReferral(true)
+        onSubmit={async (e) => {
+           const res = await createUser(e, route.query.code as string | undefined)
+           if(res?.success) {
+            setReferralCode(res?.referralCode || '')
+            setWaitlist(false)
+            setReferral(true)
+             await axios.post("https://chat-earn.herokuapp.com/api/subscribe", e.email)
+             .then(response => console.log(response))
+             .catch(err => console.log(err))
+           }
+
         }}
+        validationSchema={validationSchema}
           formValue={[
             {
                 label: 'Select Wallet Type*',
@@ -121,16 +161,17 @@ const Hero = () => {
       closeIcon
       onClose={() => setReferral(prev => !prev)}
       maxWidth='sm'
-      title='Join Waitlist & Airdrop'
+      title='Submission Completed'
       subtitle='You have successfully joined our waitlist, you will be notified when we launch, Please follow us on social media.'
       contents={<div className='mb-4'>
           <div className="bg-gradient-to-b from-[#8F8F8F] to-[#8F8F8F00] rounded-[10px] p-[1px]">
-            <Button className='bg-black w-full py-[10px] lowercase gap-2 rounded-[10px] font-ranade text-[#8F8F8F] text-[10px] flex justify-center items-center font-[200]'>
+            <Button onClick={handleCopyText} className='bg-black w-full py-[10px] lowercase gap-2 rounded-[10px] font-ranade text-white text-[10px] flex justify-center items-center font-[200]'>
                 <Image alt='copy-icon' src={CopyIcon} />
                 <span>Copy & share your referral link to earn more tokens</span>
             </Button>
           </div>
-          <div className="text-center font-ranade text-[#8F8F8F] text-[10px] font-[200]">BlowXsquad/463462</div>
+          <div className="text-center font-ranade text-white text-[10px] font-[200]"> { copied ? 'Copied: ' : '' } BlowXsquad/{referralCode}</div>
+         { referralCode && <input type="text" className='hidden' id='copyReferral' disabled defaultValue={`${window.location.origin}?code=${referralCode}`} /> }
       </div>}
       />
     </div>

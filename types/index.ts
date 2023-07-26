@@ -28,3 +28,13 @@ export interface InputProps {
        label: string
     }[]
 }
+
+export interface UserProps {
+    walletType: string;
+    walletAddress: string;
+    email: string;
+    twitterHandle: string;
+    telegramHandle: string;
+    referrals?: number;
+    referralCode?: string;
+}

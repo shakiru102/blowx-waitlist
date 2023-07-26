@@ -8,31 +8,42 @@ import SolidButton from './SolidButton'
 interface RenderFormProps {
     formValue: InputProps[];
     onSubmit: (e?: any) => void;
+    validationSchema?: any
 }
 
 const RenderForm: FC<RenderFormProps> = ({
     formValue,
-    onSubmit
+    onSubmit,
+    validationSchema
 }) => {
   return (
    <Formik
    onSubmit={onSubmit}
    initialValues={{}}
+   validationSchema={validationSchema}
    >
-    {({ values, handleChange, handleSubmit }) => (
+    {({ values, handleChange, handleSubmit, errors, isSubmitting }) => (
         <>
          { 
            formValue.map((item: InputProps, i: number) => {
             switch (item.inputType) {
                 case 'select':
-                    return <SelectInput placeholder={item.placeholder} label={item.label} name={item.name} handleChange={handleChange(item.name)} selectOptions={item.selectOptions} key={i} />
+                    return <div className='mb-1'  key={i}>
+                    <SelectInput placeholder={item.placeholder} label={item.label} name={item.name} handleChange={handleChange(item.name)} selectOptions={item.selectOptions} />
+                    {/* @ts-ignore */}
+                    <div className='text-red-500 text-[10px]'>{errors[item.name]}</div>
+                    </div>
                 default:
-                    return <TextInput  placeholder={item.placeholder} label={item.label} name={item.name} handleChange={handleChange(item.name)}  key={i} />;
+                    return <div className='mb-1'  key={i}>
+                    <TextInput  placeholder={item.placeholder} label={item.label} name={item.name} handleChange={handleChange(item.name)}  />
+                    {/* @ts-ignore */}
+                    <div className='text-red-500 text-[10px]'>{errors[item.name]}</div>
+                    </div>
             }
            })
          }
-         <SolidButton onClick={() => handleSubmit()} className='w-[100%] mb-4'>
-            Submit
+         <SolidButton disabled={isSubmitting} onClick={() => handleSubmit()} className='w-[100%] mb-4'>
+          {  isSubmitting ? "Loading..." : "Submit" }
          </SolidButton>
         </>
     )}
