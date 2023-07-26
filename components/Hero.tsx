@@ -30,7 +30,7 @@ const Hero = () => {
             <div className=' mb-8 mt-4 font-clash-display inline-block text-transparent text-[20px] lg:text-[24px] bg-clip-text bg-gradient-to-br from-white to-[rgba(255,255,255,0.00)]'>
                 Building the largest global Next-Gen ecosystem with real world assets, giving ownership to everyone.
             </div>
-            <div className="mb-16 text-white font-clash-display grid  w-full grid-cols-4 place-items-center">
+            <div className="mb-16 text-white font-clash-display grid mx-auto w-full grid-cols-4 place-items-center">
                 <div className="w-[97px] p-[1px] h-[74px] flex bg-gradient-to-b from-[#8F8F8F] to-[#8F8F8F00] box-border rounded-[10px]">
                     <div className='bg-[#000000] flex-1 rounded-[10px] pl-2 py-1 text-left'>
                        <div className="text-[24px]">{days}</div>
@@ -83,7 +83,7 @@ const Hero = () => {
                 selectOptions: [
                     { label: 'ENS',  value: 'ENS' }, 
                     { label: 'ETH Address',  value: 'ETH Address' }, 
-                    { label: 'BSC Address',  value: 'BSC Address' }, 
+                    { label: 'BEP20 Address',  value: 'BEP20 Address' }, 
                     { label: 'ARB Address',  value: 'ARB Address' }
                 ]
             },
