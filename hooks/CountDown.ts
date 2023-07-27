@@ -11,7 +11,7 @@ const countDown = () => {
    
       useEffect(() => {
         const interval = setInterval(() => {
-          const targetDate = new Date("2023-08-04"); // Set your target date here
+          const targetDate = new Date("2023-09-01"); // Set your target date here
           const now = new Date();
         //   @ts-ignore
           const timeDifference = targetDate - now;
