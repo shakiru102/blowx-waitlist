@@ -112,7 +112,7 @@ const Hero = () => {
             setReferralCode(res?.referralCode || '')
             // setWaitlist(false)
             // setReferral(true)
-             await axios.post("https://blowx-api.onrender.com./api/send-mail", { email: e.email })
+             await axios.post("https://blowx-api.onrender.com/api/send-mail", { email: e.email })
              .then(response => {
                 setWaitlist(false)
                 setReferral(true)
