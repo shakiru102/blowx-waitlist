@@ -110,11 +110,14 @@ const Hero = () => {
            const res = await createUser(e, route.query.code as string | undefined)
            if(res?.success) {
             setReferralCode(res?.referralCode || '')
-            setWaitlist(false)
-            setReferral(true)
-             await axios.post("https://chat-earn.herokuapp.com/api/subscribe", e.email)
-             .then(response => console.log(response))
-             .catch(err => console.log(err))
+            // setWaitlist(false)
+            // setReferral(true)
+             await axios.post("https://blowx-api.onrender.com./api/send-mail", { email: e.email })
+             .then(response => {
+                setWaitlist(false)
+                setReferral(true)
+             })
+             .catch(err => alert(err.message))
            }
 
         }}
