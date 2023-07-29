@@ -60,7 +60,7 @@ const Hero = () => {
                 Join us, Let’s get started
             </div>
             <div className=' mb-8 mt-4 font-clash-display inline-block text-transparent text-[20px] lg:text-[24px] bg-clip-text bg-gradient-to-br from-white to-[rgba(255,255,255,0.00)]'>
-                Building the largest global Next-Gen ecosystem with real world assets, giving ownership to everyone.
+                Building the largest global Next-Gen ecosystem with tokenised real world assets, giving ownership to everyone.
             </div>
             <div className="mb-16 text-white font-clash-display grid mx-auto w-full grid-cols-4 place-items-center">
                 <div className=" w-[80px] h-[60px] lg:w-[97px] p-[1px] lg:h-[74px] flex bg-gradient-to-b from-[#8F8F8F] to-[#8F8F8F00] box-border rounded-[10px]">
