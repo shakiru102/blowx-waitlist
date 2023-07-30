@@ -14,7 +14,7 @@ const MediaIcons: FC = () => {
         },
           {
             icon: <BiLogoTelegram color='white' size={24}/>,
-            link: 'https://t.me/BlowX_Official'
+            link: 'https://t.me/BlowX_Officia1'
         },
         {
           icon: <AiFillInstagram  color='white' size={24}/>,
