@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Bg from '../assets/bg.png'
 import Logo from '../assets/logo.png'
 import countDown from '../hooks/CountDown'
@@ -14,14 +14,18 @@ import { UserProps } from 'types'
 import { createUser } from '../firebase'
 import axios from 'axios'
 import { useRouter } from 'next/router'
+import PolicyModal from './utils/PolicyModal'
 
 const Hero = () => {
     const route = useRouter()
-    const { days, hours, minutes, seconds } = countDown()
+    const { countdown, agreement } = countDown()
+    const { days, hours, minutes, seconds } = countdown
     const [waitlist, setWaitlist] = useState<boolean>(false)
     const [referral, setReferral] = useState<boolean>(false)
+    const [policy, setPolicy] = useState<boolean>(false)
     const [copied, setCopied] = useState<boolean>(false)
     const [referralCode, setReferralCode] = useState<string>('')
+    const [agreementDetails, setAgreementDetails] = useState<typeof agreement['termOfUse']>(agreement.cookies)
     const validationSchema = yup.object<UserProps>({
         walletType: yup.string().required('Required'),
         walletAddress: yup.string().required('Required'),
@@ -30,6 +34,13 @@ const Hero = () => {
         telegramHandle: yup.string().required('Required')
     })
 
+    const handleAgreement = (value: string) => {
+        setPolicy(true)
+        // @ts-ignore
+        setAgreementDetails(agreement[value])
+    }
+
+    useEffect(() => setPolicy(true) ,[])
     const handleCopyText = () => {
         let copyReferral = document.getElementById("copyReferral");
  
@@ -94,11 +105,23 @@ const Hero = () => {
             <SolidButton onClick={() => setWaitlist(prev => !prev)} >
                 Join Waitlist & Airdrop
             </SolidButton>
+            <div className="text-center text-white font-ranade text-[12px] mt-4">By signing up, you agree to the <span onClick={() => handleAgreement('termOfUse')} className='underline cursor-pointer'>Terms of Service </span> and <span className='underline cursor-pointer' onClick={() => handleAgreement('policy')}>Privacy Policy</span>, including <span className='underline cursor-pointer' onClick={() => handleAgreement('cookies')}>Cookie Use</span>.</div>
             <div className="absolute bottom-0 left-0 w-full flex justify-center items-center gap-2 text-white font-ranade text-[12px] lg:text-[14px] py-4">
                 <Image alt='copyright' src={CopyRight}/>
                 <span> 2023 BlowX Inc. All right reserved </span>
             </div>
       </div>
+
+
+<PolicyModal
+ open={policy}
+ onClose={() => setPolicy(false)}
+ title={agreementDetails?.title}
+ policyContents={agreementDetails?.content}
+ maxWidth='sm'
+/>
+
+
       <Modal
       open={waitlist}
       onClose={() => setWaitlist(prev => !prev)}
@@ -112,6 +135,7 @@ const Hero = () => {
             setReferralCode(res?.referralCode || '')
             // setWaitlist(false)
             // setReferral(true)
+            // https://blow-x-828e26e08e61.herokuapp.com/api/send-mail
              await axios.post("https://blow-x-828e26e08e61.herokuapp.com/api/send-mail", { email: e.email })
              .then(response => {
                 setWaitlist(false)

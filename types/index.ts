@@ -9,7 +9,8 @@ export interface MediaProps {
 export interface ModalProps {
     title?: string;
     subtitle?: string;
-    contents?: ReactNode;
+    contents?: ReactNode ;
+    policyContents?: {subtitle: string; text: string}[]
     open: boolean;
     onClose?: (event: any) => void;
     maxWidth?: Breakpoint;
