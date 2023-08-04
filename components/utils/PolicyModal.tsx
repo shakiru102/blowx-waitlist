@@ -2,6 +2,7 @@ import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, I
 import React, { FC } from 'react'
 import { ModalProps } from '../../types'
 import SolidButton from './SolidButton'
+import OutlineButton from './OutlineButton'
 
 const PolicyModal: FC<ModalProps> = ({
     contents,
@@ -41,9 +42,10 @@ const PolicyModal: FC<ModalProps> = ({
                 )) }
             </DialogContentText>
             {
-            title == "COOKIES" &&
+            title == "COOKIES USE" &&
             <DialogActions>
                 <SolidButton onClick={onClose}>Accept All</SolidButton>
+                <OutlineButton onClick={onClose}>Reject All</OutlineButton>
              </DialogActions>
              }
         </DialogContent>
