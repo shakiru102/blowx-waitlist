@@ -189,7 +189,7 @@ const Hero = () => {
       onClose={() => setReferral(prev => !prev)}
       maxWidth='sm'
       title='Submission Completed'
-      subtitle='You have successfully joined our waitlist, you will be notified when we launch, Join the BlowX community via our social media channels.'
+      subtitle='You have successfully joined our waitlist, you will be notified when we launch. Join the BlowX community via our social media channels.'
       contents={<div className='mb-4'>
           <div className="bg-gradient-to-b from-[#8F8F8F] to-[#8F8F8F00] rounded-[10px] p-[1px]">
             <Button onClick={handleCopyText} className='bg-black w-full py-[10px] lowercase gap-2 rounded-[10px] font-ranade text-white text-[10px] flex justify-center items-center font-[200]'>
