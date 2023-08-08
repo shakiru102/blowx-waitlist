@@ -45,7 +45,7 @@ const PolicyModal: FC<ModalProps> = ({
             title == "COOKIES USE" &&
             <DialogActions>
                 <SolidButton onClick={onClose}>Accept All</SolidButton>
-                <OutlineButton onClick={onClose}>Reject All</OutlineButton>
+                <OutlineButton onClick={onClose}>Cookie Settings</OutlineButton>
              </DialogActions>
              }
         </DialogContent>
