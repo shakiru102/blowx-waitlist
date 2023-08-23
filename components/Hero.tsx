@@ -136,8 +136,8 @@ const Hero = () => {
             setWaitlist(false)
             setReferral(true)
             // https://blow-x-828e26e08e61.herokuapp.com/api/send-mail
-             await axios.post("https://blow-x-828e26e08e61.herokuapp.com/api/send-mail", { email: e.email })
-             .catch(err => alert(err.message))
+            //  await axios.post("https://blow-x-828e26e08e61.herokuapp.com/api/send-mail", { email: e.email })
+            //  .catch(err => alert(err.message))
            }
 
         }}
