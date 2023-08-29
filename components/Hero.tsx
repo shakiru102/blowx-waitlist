@@ -133,15 +133,11 @@ const Hero = () => {
            const res = await createUser(e, route.query.code as string | undefined)
            if(res?.success) {
             setReferralCode(res?.referralCode || '')
-            // setWaitlist(false)
-            // setReferral(true)
+            setWaitlist(false)
+            setReferral(true)
             // https://blow-x-828e26e08e61.herokuapp.com/api/send-mail
-             await axios.post("https://blow-x-828e26e08e61.herokuapp.com/api/send-mail", { email: e.email })
-             .then(response => {
-                setWaitlist(false)
-                setReferral(true)
-             })
-             .catch(err => alert(err.message))
+            //  await axios.post("https://blow-x-828e26e08e61.herokuapp.com/api/send-mail", { email: e.email })
+            //  .catch(err => alert(err.message))
            }
 
         }}

@@ -24,7 +24,7 @@ const Modal: FC<ModalProps> = ({
     aria-describedby="scroll-dialog-description"
     maxWidth={maxWidth || 'xs'}
     PaperProps={{
-        className: "bg-gradient-to-b from-[#8F8F8F] to-black p-[1px] rounded-[10px]"
+        className: "bg-gradient-to-b from-[#8F8F8F] to-black p-[1px] rounded-[10px] flow-hide"
     }}
     >
     <div className='bg-black text-white rounded-[10px] px-1 py-4'>
