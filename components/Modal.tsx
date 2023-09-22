@@ -39,6 +39,8 @@ const Modal: FC<ModalProps> = ({
             <div className="text-center flex justify-center">
                 <Image alt='logo' src={ModalLogo} />
             </div>
+
+            
             <div className='font-clash-display text-[20px] text-center lg:text-[24px] mt-4'>
             {title}
             </div>
